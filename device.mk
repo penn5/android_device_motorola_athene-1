@@ -61,7 +61,10 @@ PRODUCT_COPY_FILES += \
 # Motorola Camera permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/com.motorola.camera.xml:system/etc/permissions/com.motorola.camera.xml \
-    $(LOCAL_PATH)/configs/camera/com.motorola.cameraone.xml:system/etc/permissions/com.motorola.cameraone.xml
+    $(LOCAL_PATH)/configs/camera/com.motorola.camera2.xml:system/etc/permissions/com.motorola.camera2.xml \
+    $(LOCAL_PATH)/configs/camera/com.motorola.cameraone.xml:system/etc/permissions/com.motorola.cameraone.xml \
+    $(LOCAL_PATH)/configs/camera/deviceowner-configuration-com.motorola.camera2.xml:system/etc/permissions/deviceowner-configuration-com.motorola.camera2.xml \
+    $(LOCAL_PATH)/configs/camera/privapp-permissions-com.motorola.camera2.xml:system/etc/permissions/privapp-permissions-com.motorola.camera2.xml
 
 # External camera
 PRODUCT_COPY_FILES += \
@@ -112,8 +115,12 @@ PRODUCT_COPY_FILES +=  \
 PRODUCT_PACKAGES += \
     libbson \
     libshims_camera \
-    libshims_shoot \
-    Camera2
+    libshims_shoot
+
+PRODUCT_PACKAGES += \
+    MediaShortcuts \
+    MotoPhotoEditor \
+    MotCamera2
 
 # Disable camera Treble path
 PRODUCT_PROPERTY_OVERRIDES += \
