@@ -3,6 +3,18 @@
 # Ported to ramdisk by jhenrique09
 
 on property:sys.boot_completed=1
-   # selinux nodes, hide permissive state
-   chmod 0640 /sys/fs/selinux/enforce
-   chmod 0440 /sys/fs/selinux/policy 
+    #selinux nodes, hide permissive state
+    chmod 0640 /sys/fs/selinux/enforce
+    chmod 0440 /sys/fs/selinux/policy
+# Safetynet bypass
+#Inspired by linux bind-mounts
+#ported to both magisk and ramdisk by hackintosh5
+service safetypatch /etc/safetypatch.sh
+    oneshot
+    seclabel u:r:init:s0
+    user root
+    group root
+
+on post-fs-data
+    #unlocked bootloader state
+    exec_start safetypatch  
